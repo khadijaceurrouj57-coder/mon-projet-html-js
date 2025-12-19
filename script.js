@@ -1,34 +1,21 @@
-const autoformations = {
-  "HTML et CSS": "C1",
-  "JavaScript de base": "C2",
-  "Git et GitHub": "C3",
-  "Algorithmique": "C4",
-  "Base de données SQL": "C5",
-  "Programmation orientée objet": "C6",
-  "Frameworks front-end": "C7",
-  "Projet fil rouge": "C8"
-};
+let x = [
+  {name: "HTML", options: ["C1", "C2", "C3","C4","C5"], correct: "C1"},
+  {name: "CSS", options: ["C1", "C2", "C3","C4","C5"], correct: "C2"},
+  {name: "JavaScript", options: ["C1", "C2", "C3","C4","C5"], correct: "C3"},
+  {name: "Java", options: ["C1", "C2", "C3","C4","C5"], correct: "C4"},
+  {name: "PHP", options: ["C1", "C2", "C3","C4","C5"], correct: "C5"}
+];
 
 let score = 0;
-const maxQuestions = 5;
 
-function getRandomAutoformation() {
-  const keys = Object.keys(autoformations);
-  const randomIndex = Math.floor(Math.random() * keys.length);
-  return keys[randomIndex];
-}
-
-for (let i = 1; i <= maxQuestions; i++) {
-  const formation = getRandomAutoformation();
-  const bonneReponse = autoformations[formation];
-
-  const reponse = prompt(`(${i}/${maxQuestions}) 📚 Autoformation : "${formation}"\n👉 Entre le code compétence (C1 - C8):`);
-
-  if (reponse && reponse.toUpperCase() === bonneReponse) {
-    alert("✅ Correct !");
-    
-    score++;
-  } else {
-    alert(`❌ Faux. La bonne réponse était ${bonneReponse}.`);
+for (let i = 0; i < x.length; i++) {
+  let question = `Quel est le code de  ${x[i].name}?\n` ;
+  for (let j = 0; j < x[i].options.length; j++) {
+    question += `${j + 1}. ${x[i].options[j]}\n` ;
   }
-}
+
+  let userreponde = prompt(question)
+  if (userreponde === x[i].correct) {
+  score++ ;
+  }
+} console.log("Your Score is " +score + " / 5");
